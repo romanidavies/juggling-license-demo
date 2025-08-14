@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName = "Your email address" %}
+{% set pageName = "What is your most impressive juggling trick?" %}
 
 {% block beforeContent %}
 {{ govukBackLink({
@@ -13,25 +13,27 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+
     <form novalidate method="post">
-      {{ govukInput({
-        id: "[new][emailAddress]",
-        name: "[new][emailAddress]",
+
+      {{ govukCharacterCount({
+        name: "[new][trick]",
+        id: "[new][trick]",
         label: {
           text: pageName,
           isPageHeading: true,
           classes: "govuk-label--l"
         },
-        value: data.new.emailAddress,
-        type: "email",
-        autocomplete: "email",
-        spellcheck: false
+        maxwords: 200,
+        value: data.new.trick
       }) }}
 
-    {{ govukButton({
+          {{ govukButton({
       text: "Continue"
     }) }}
+
     </form>
+
   </div>
 </div>
 

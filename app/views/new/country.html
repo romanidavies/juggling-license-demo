@@ -1,0 +1,77 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Your country" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form novalidate method="post">
+
+      {{ govukSelect({
+        id: "[new][country]",
+        name: "[new][country]",
+        classes: "countryAutocomplete",
+        label: {
+          text: pageName,
+          isPageHeading: true,
+          classes: "govuk-label--l"
+        },
+        value: data.new.country,
+        items: [
+          {
+            value: "",
+            text: "Select"
+          },
+          {
+            value: "Afganistan",
+            text: "Afganistan"
+          },
+          {
+            value: "Brazil",
+            text: "Brazil"
+          },
+          {
+            value: "China",
+            text: "China"
+          },          
+          {
+            value: "Denmark",
+            text: "Denmark"
+          },          
+          {
+            value: "Ecuador",
+            text: "Ecuador"
+          }
+        ]
+      }) }}
+      
+
+          {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+{{super()}}
+<script>
+  accessibileAutocomplete.enhanceSelectElement({
+    selectElement: document.querySelector('.countryAutocomplete')
+  })
+</script>
+{% endblock %}
