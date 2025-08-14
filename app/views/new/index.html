@@ -1,7 +1,5 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName= "Prototype" %}
-
 {% block content %}
 
 <div class="govuk-grid-row">
@@ -10,9 +8,15 @@
     {% include "govuk-prototype-kit/includes/homepage-top.njk" %}
 
     <h1 class="govuk-heading-l">
-      {{ pageName }}
+      {{ serviceName }}
     </h1>
-    <p><a href="/new">Go to the first page of prototype</a></p>
+    <p>To apply for a juggling licence you must tell us about your juggling abilities.</p>
+
+    {{ govukButton({
+      text: "Start now",
+      href: "/new/email-address",
+      isStartButton: true
+    }) }}
   </div>
 </div>
 
